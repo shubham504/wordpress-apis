@@ -3,9 +3,11 @@
 
 
 # get wordpress pages
-api paths
-http://localhost/wordpress/index.php/wp-json/wp/v2/pages
-http://localhost/wordpress/index.php/wp-json/wp/v2/post
+# api paths
+
+# http://localhost/wordpress/index.php/wp-json/wp/v2/pages
+
+# http://localhost/wordpress/index.php/wp-json/wp/v2/post
 
 
 ```

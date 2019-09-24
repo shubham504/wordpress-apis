@@ -32,11 +32,28 @@
                     var json = JSON.parse(JSON.stringify(data));
                     $(json).each(function (i, val) {
                     //console.log(i + " : " + val);
-                      $.each(val, function (k, v) {
-                        console.log(k + " : " + v);
-                       jQuery('#dispclass').append(v);
+                      $.each(val, function(k, v) {
+                                    console.log(v.rendered);
+                                    
+                                    var jsonn = JSON.parse(JSON.stringify(v));
+                                    //console.log(jsonn.id);
+                                    console.log(k + " : " + v);
+                                    if (k != 'guid') {
+                                        if (k == "title") {
+                                            jQuery('#dispclass').append("<h1>" + v.rendered + "</h1>");
+                                        } else {
+                                            jQuery('#dispclass').append(v.rendered);
 
-                      });
+                                        }
+
+                                    } else {
+
+                                    }
+
+
+                                    //console.log(v);
+                                    //jQuery('#dispclass').append(v.rendered);
+                                });
 
                     }); 
 

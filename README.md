@@ -138,3 +138,44 @@ function wc_rest_user_endpoint_handler($request = null) {
   return new WP_REST_Response($response, 123);
 }
 ```
+
+# Use api
+
+
+```
+<script>
+jQuery(document).ready(function () {
+jQuery('#bookingSubmitform').on('submit', function (e) {
+    e.preventDefault();
+     var nameBooking=jQuery('#Name').val();
+     var datepicker=jQuery('#datepicker').val();
+     var from=jQuery('#from').val();
+     var to=jQuery('#to').val();
+      var serviceRequest=jQuery('#serviceRequest').val();
+    jQuery.ajax( {
+            url: 'http://xyz.com/wp-json/bookingAPI/booking',
+            method: 'POST', 
+            contentType: "application/json; charset=utf-8",  
+            dataType: "json", 
+            data:JSON.stringify({
+                'user_id' : <?php echo $userID; ?>,
+                'name' : nameBooking
+            })
+        } ).done( function ( response ) {
+             console.log(response);
+           // console.log(response.message);
+            console.log(response.status);
+            if(response.status != false){
+            jQuery("#signin-response").html('<div class="alert alert-success">'+response.message+'</div>');
+            setTimeout(function() {
+                        location.reload();
+                    }, 1300)
+            }else{
+                 jQuery("#signin-response").html('<div class="alert alert-danger">'+response.message+'</div>');
+                 jQuery(".form-control").addClass("alert alert-error");   
+            }
+        } );
+});
+});
+</script>
+```
